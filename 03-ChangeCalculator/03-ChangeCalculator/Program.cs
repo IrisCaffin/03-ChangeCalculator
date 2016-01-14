@@ -12,7 +12,7 @@ namespace _03_ChangeCalculator
         {
             //Ask the user to enter the cost
             Console.WriteLine("Enter cost: ");
-            //Define cost information given
+            //Read and define cost information given
             string cost = Console.ReadLine();
             //Convert submitted cost input into an decimal
             decimal totalCost = decimal.Parse(cost);
@@ -20,15 +20,18 @@ namespace _03_ChangeCalculator
 
             //Ask the user to enter the money receivved
             Console.WriteLine("Enter money received from customer: ");
-            //Define money received information given
+            //Read and define money received information given
             string money = Console.ReadLine();
             //Convert submited money received input into an integer
             decimal receivedMoney = decimal.Parse(money);
       
-            //Figure out the change by subtracting totalCost from givenMoney
+            //Figure out the change by subtracting totalCost from receivedMoney
             decimal change = receivedMoney - totalCost;
 
             //Turn change into quarters, dimes, nickels, and pennies
+            //When dealing with doubles in a decimal situation suffix each number with a letter m
+            //Math.Floor rounds down and Math.Ceiling rounds up
+            //Modulo -> % takes the division operation and looks at the remainder, e.g. 3.25, the module looks at 0.25
             decimal quartersFractional = change / 0.25m;
             decimal actualQuarters = Math.Floor(quartersFractional);
 
@@ -42,6 +45,8 @@ namespace _03_ChangeCalculator
             decimal actualPennies = Math.Floor(penniesFractional);
 
             //Give change and quarters, dimes, nickels, and pennies results back to the user
+            Console.WriteLine("Amount to return to customer: " + change);
+            Console.WriteLine("Change to be returned in the following denominations: ");
             Console.WriteLine("Quarters: " + actualQuarters);
             Console.WriteLine("Dimes: " + actualDimes);
             Console.WriteLine("Nickels: " + actualNickels);
